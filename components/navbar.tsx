@@ -18,12 +18,14 @@ import clsx from 'clsx'
 
 import { siteConfig } from '@/config/site'
 import { ThemeSwitch } from '@/components/theme-switch'
-import { HeartFilledIcon, SearchIcon } from '@/components/icons'
+import { SearchIcon } from '@/components/icons'
 
 import { FaCameraRetro, FaFacebookSquare, FaInstagram } from 'react-icons/fa'
 import { usePathname } from 'next/navigation'
 
 export const Navbar = () => {
+  const pathName = usePathname()
+
   const searchInput = (
     <Input
       aria-label='Search'
@@ -39,9 +41,6 @@ export const Navbar = () => {
       type='search'
     />
   )
-
-  const pathName = usePathname()
-  console.log('pathname: ', pathName)
 
   return (
     <NextUINavbar maxWidth='xl' position='sticky' isBordered isBlurred={true}>
@@ -95,23 +94,23 @@ export const Navbar = () => {
             aria-label='Facebook'
             href={siteConfig.links.facebook}
           >
-            <FaFacebookSquare size={22} className='text-default-500' />
+            <FaFacebookSquare size={22} />
           </Link>
           <Link
             isExternal
             aria-label='Instagram'
             href={siteConfig.links.instagram}
           >
-            <FaInstagram size={22} className='text-default-500' />
+            <FaInstagram size={22} className='text-pink-500' />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className='hidden lg:flex'>{searchInput}</NavbarItem>
         <NavbarItem className='hidden lg:flex'>
-          <Link href='/auth/login'>Login</Link>
+          <Link href='/login'>Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color='primary' href='/auth/sign-up' variant='flat'>
+          <Button as={Link} color='primary' href='/register' variant='flat'>
             Sign Up
           </Button>
         </NavbarItem>
