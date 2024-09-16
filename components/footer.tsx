@@ -8,61 +8,88 @@ import { Button } from '@nextui-org/button'
 import { BsTelephone } from 'react-icons/bs'
 import { CiMail } from 'react-icons/ci'
 import { FiMapPin } from 'react-icons/fi'
-import { FaA, FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowRightLong } from 'react-icons/fa6'
+import { FormEvent, useEffect, useState } from 'react'
+import { MailIcon } from '@/components/ui/MailIcon'
 
 export default function Footer () {
-  const handleSubcription = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log('hellooo')
+  const [subcriberEmail, setSubcriberEamil] = useState('')
+  const [isInvalid, setIsInvalid] = useState(false)
+  const [isMdScreen, setIsMdScreen] = useState(false);
+
+  const validateEmail = (email: string): boolean => {
+    const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+    return pattern.test(email)
   }
+
+  async function onSubmit (event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    if (!validateEmail(subcriberEmail)) setIsInvalid(true)
+    else setIsInvalid(false)
+  }
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMdScreen(window.innerWidth > 768);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <footer className='container max-w-7xl mx-auto flex flex-col py-2'>
-      <div className=' flex justify-between'>
-        <div className='flex flex-col gap-2 w-1/4'>
+      <div className='flex flex-col gap-2 justify-between md:flex-row md:gap-0'>
+        <div className='flex flex-col gap-2 md:md:w-1/4 mx-3'>
           <NextLink className='flex justify-start items-center gap-2' href='/'>
-            <FaCameraRetro size={40} />
+            <FaCameraRetro className='shrink-0' size={35} />
             <h3 className='font-bold text-inherit text-2xl'>CAMSHOP</h3>
           </NextLink>
           <p>CAMSHOP since 2024</p>
-          <p>
+          <p className='font-bold italic'>
             “The camera is an instrument that teaches people how to see without
             a camera.”
           </p>
         </div>
-        <Divider orientation='vertical' />
 
-        <div className='w-1/4 mx-3'>
-          <h4 className='ml-1 font-bold text-xl'>Contact</h4>
+        {isMdScreen && <Divider orientation='vertical' />}
+        <div className='md:md:w-1/4 mx-3'>
+          <h4 className='font-bold text-xl'>Contact</h4>
 
           <div className='flex flex-col gap-2 mt-4'>
             <a
               target='_blank'
               href='https://maps.app.goo.gl/2DpC8C2gMQPdgWC4A'
-              className='ml-1 underline flex items-center gap-2 hover:underline hover:font-bold'
+              className='underline flex items-center gap-2 hover:underline hover:font-bold'
             >
-              <FiMapPin size={32} />
+              <FiMapPin className='shrink-0 text-default-500' size={20} />
               <p>Han Thuyen Street, Quarter 6P, Thu Duc, Ho Chi Minh City</p>
             </a>
             <a
               href='mailto:camshop@gm.com'
               className='underline flex justify-start items-center gap-2 hover:underline hover:font-bold'
             >
-              <CiMail size={25} />
+              <CiMail className='shrink-0 text-default-500' size={20} />
               <p>camshop@gm.com</p>
             </a>
             <a
               href='tel:+84123456789'
               className='mt-2 underline flex justify-start items-center gap-2 hover:underline hover:font-bold'
             >
-              <BsTelephone size={20} />
+              <BsTelephone className='shrink-0 text-default-500' size={20} />
               <p>0123456789</p>
             </a>
           </div>
         </div>
-        <Divider orientation='vertical' />
+        {isMdScreen && <Divider orientation='vertical' />}
 
-        <div className='w-1/4 mx-3'>
+        <div className='md:w-1/4 mx-3'>
           <h4 className='font-bold text-xl'>FAQ</h4>
 
           <div className='mt-4 flex flex-col gap-1'>
@@ -113,14 +140,24 @@ export default function Footer () {
             </Link>
           </div>
         </div>
-        <Divider orientation='vertical' />
+        {isMdScreen && <Divider orientation='vertical' />}
 
-        <div className='w-1/4 mx-3'>
+        <div className='md:w-1/4 mx-3'>
           <h4 className='font-bold text-xl'>Newsletter Subscription</h4>
 
-          <form className='mt-4' onSubmit={handleSubcription}>
-            <Input type='email' variant='bordered' label='Enter your email' />
-            <Button type='submit' className='mt-2' size='lg'>
+          <form className='mt-4' onSubmit={onSubmit}>
+            <Input
+              value={subcriberEmail}
+              onValueChange={setSubcriberEamil}
+              startContent={
+                <MailIcon className='text-2xl text-default-400 pointer-events-none flex-shrink-0' />
+              }
+              placeholder='Enter your email'
+              variant='bordered'
+              errorMessage='Please enter a valid email'
+              isInvalid={isInvalid}
+            />
+            <Button type='submit' className='mt-2 w-full' size='md'>
               Subcribe
               <FaArrowRightLong />
             </Button>

@@ -7,7 +7,6 @@ export default function AuthLayout ({
 }) {
   return (
     <section>
-      Auth page
       {children}
     </section>
   )

@@ -106,12 +106,9 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className='hidden lg:flex'>{searchInput}</NavbarItem>
-        <NavbarItem className='hidden lg:flex'>
-          <Link href='/login'>Login</Link>
-        </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color='primary' href='/register' variant='flat'>
-            Sign Up
+          <Button as={Link} color='primary' href='/login' variant='ghost'>
+            Log In
           </Button>
         </NavbarItem>
       </NavbarContent>
