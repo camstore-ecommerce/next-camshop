@@ -1,26 +1,19 @@
 'use client'
 import Link from 'next/link'
-import { FaCameraRetro, FaCopyright } from 'react-icons/fa'
+import { FaCameraRetro, FaCopyright, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
 import { Divider } from '@nextui-org/divider'
 import NextLink from 'next/link'
 import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
-import { BsTelephone } from 'react-icons/bs'
-import { CiMail } from 'react-icons/ci'
-import { FiMapPin } from 'react-icons/fi'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { FormEvent, useEffect, useState } from 'react'
 import { MailIcon } from '@/components/ui/MailIcon'
+import { validateEmail } from '@/utils/helper'
 
 export default function Footer () {
   const [subcriberEmail, setSubcriberEamil] = useState('')
   const [isInvalid, setIsInvalid] = useState(false)
-  const [isMdScreen, setIsMdScreen] = useState(false);
-
-  const validateEmail = (email: string): boolean => {
-    const pattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
-    return pattern.test(email)
-  }
+  const [isMdScreen, setIsMdScreen] = useState(false)
 
   async function onSubmit (event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -68,21 +61,21 @@ export default function Footer () {
               href='https://maps.app.goo.gl/2DpC8C2gMQPdgWC4A'
               className='underline flex items-center gap-2 hover:underline hover:font-bold'
             >
-              <FiMapPin className='shrink-0 text-default-500' size={20} />
+              <FaMapMarkerAlt className='shrink-0 text-default-500' size={20} />
               <p>Han Thuyen Street, Quarter 6P, Thu Duc, Ho Chi Minh City</p>
             </a>
             <a
               href='mailto:camshop@gm.com'
               className='underline flex justify-start items-center gap-2 hover:underline hover:font-bold'
             >
-              <CiMail className='shrink-0 text-default-500' size={20} />
+              <MailIcon className='text-default-500 text-xl' />
               <p>camshop@gm.com</p>
             </a>
             <a
               href='tel:+84123456789'
               className='mt-2 underline flex justify-start items-center gap-2 hover:underline hover:font-bold'
             >
-              <BsTelephone className='shrink-0 text-default-500' size={20} />
+              <FaPhoneAlt className='shrink-0 text-default-500' size={20} />
               <p>0123456789</p>
             </a>
           </div>
