@@ -5,7 +5,5 @@ export const authConfig = {
     signIn: '/login'
   },
 
-  
-
   providers: []
 } satisfies NextAuthConfig
