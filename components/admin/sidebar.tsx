@@ -3,58 +3,65 @@
 import { Link } from '@nextui-org/link'
 import { FaCameraRetro } from 'react-icons/fa'
 import { Divider } from '@nextui-org/divider'
-import { Button } from '@nextui-org/button'
+import { Button, ButtonProps } from '@nextui-org/button'
 import { TbLayoutDashboardFilled } from 'react-icons/tb'
 import { FaUserGroup } from 'react-icons/fa6'
 import { usePathname } from 'next/navigation'
+
+const buttonProps: ButtonProps = {
+  className: 'justify-start capitalize',
+  variant: 'solid',
+  size: 'lg'
+}
+
+const iconProps: {
+  className: string
+  size: number
+} = {
+  className: 'flex-shrink-0',
+  size: 25
+}
 
 export default function SideBar () {
   const pathname = usePathname()
 
   return (
-    <div className='min-h-screen p-4 min-w-60 border-r-small border-default-300 flex flex-col gap-4'>
+    <div className='h-screen p-4 min-w-60 border-r-small border-default-300 flex flex-col gap-4'>
       <Link
         href='/'
         color='foreground'
         className='flex flex-col gap-2 text-center'
       >
         <FaCameraRetro size={35} className='flex-shrink-0 self-center' />
-        <h4>CAMPSHOP</h4>
+        <h4 className='font-bold'>CAMPSHOP</h4>
       </Link>
-      <div className='flex gap-2 items-center'>
-        <p className='text-xs uppercase font-bold'>main</p>
-        <Divider className='flex-auto' orientation='horizontal' />
-      </div>
+
+      <Divider orientation='horizontal' />
 
       <div className='flex flex-col gap-3'>
         <Button
-          className='justify-start'
-          startContent={
-            <TbLayoutDashboardFilled className='flex-shrink-0' size={25} />
-          }
+          startContent={<TbLayoutDashboardFilled {...iconProps} />}
           as={Link}
           href='/admin/dashboard'
-          color='default'
-          variant='flat'
-          size='lg'
+          color={pathname === '/admin/dashboard' ? 'primary' : 'default'}
+          {...buttonProps}
         >
-          Dashboard
+          home
         </Button>
+
         <Button
           as={Link}
           href='/admin/users'
-          className='justify-start'
-          startContent={<FaUserGroup className='flex-shrink-0' size={25} />}
-          color='default'
-          variant='flat'
-          size='lg'
+          startContent={<FaUserGroup {...iconProps} />}
+          color={pathname === '/admin/users' ? 'primary' : 'default'}
+          {...buttonProps}
         >
           Users
         </Button>
       </div>
 
       <div className='flex gap-2 items-center'>
-        <p className='text-xs uppercase font-bold'>products</p>
+        <p className='text-xs uppercase font-bold'>main</p>
         <Divider className='flex-auto' orientation='horizontal' />
       </div>
 
@@ -63,35 +70,20 @@ export default function SideBar () {
         <Button
           as={Link}
           href='/admin/users'
-          className='justify-start'
-          startContent={<FaUserGroup className='flex-shrink-0' size={25} />}
+          startContent={<FaUserGroup {...iconProps} />}
           color='default'
-          variant='flat'
-          size='lg'
+          {...buttonProps}
         >
-          Cameras
+          products
         </Button>
         <Button
           as={Link}
           href='/admin/users'
-          className='justify-start'
-          startContent={<FaUserGroup className='flex-shrink-0' size={25} />}
+          startContent={<FaUserGroup {...iconProps} />}
           color='default'
-          variant='flat'
-          size='lg'
+          {...buttonProps}
         >
-          Lens
-        </Button>
-        <Button
-          as={Link}
-          href='/admin/users'
-          className='justify-start'
-          startContent={<FaUserGroup className='flex-shrink-0' size={25} />}
-          color='default'
-          variant='flat'
-          size='lg'
-        >
-          Film
+          categories
         </Button>
       </div>
 
@@ -104,22 +96,18 @@ export default function SideBar () {
         <Button
           as={Link}
           href='/admin/users'
-          className='justify-start'
-          startContent={<FaUserGroup className='flex-shrink-0' size={25} />}
+          startContent={<FaUserGroup {...iconProps} />}
           color='default'
-          variant='flat'
-          size='lg'
+          {...buttonProps}
         >
           Orders
         </Button>
         <Button
           as={Link}
           href='/admin/users'
-          className='justify-start'
-          startContent={<FaUserGroup className='flex-shrink-0' size={25} />}
+          startContent={<FaUserGroup {...iconProps} />}
           color='default'
-          variant='flat'
-          size='lg'
+          {...buttonProps}
         >
           Transactions
         </Button>

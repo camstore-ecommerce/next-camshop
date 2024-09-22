@@ -1,3 +1,9 @@
+import Users from '@/components/admin/users/admin.users'
+
 export default function AdminUsersPage () {
-  return <div>user page</div>
+  return (
+    <div>
+      <Users />
+    </div>
+  )
 }

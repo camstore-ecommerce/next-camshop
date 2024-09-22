@@ -1,7 +1,6 @@
 'use client'
 
-import { EyeFilledIcon } from '@/components/ui/EyeFilledIcon'
-import { EyeSlashFilledIcon } from '@/components/ui/EyeSlashFilledIcon'
+import { EyeFilledIcon, EyeSlashFilledIcon, MailIcon } from '@/components/icons'
 import { Button } from '@nextui-org/button'
 import { Checkbox } from '@nextui-org/checkbox'
 import { Input } from '@nextui-org/input'
@@ -10,10 +9,10 @@ import { Divider } from '@nextui-org/divider'
 import { useState } from 'react'
 import { FaCameraRetro, FaFacebookSquare, FaKey } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
-import { MailIcon } from '@/components/ui/MailIcon'
 import { validateEmail, validatePassword } from '@/utils/helper'
 import { login } from '@/lib/actions'
 import { useFormState } from 'react-dom'
+import { inputProps } from '@/utils/definitions'
 
 export default function LoginForm () {
   const [loginState, loginAction] = useFormState(login, undefined)
@@ -53,15 +52,40 @@ export default function LoginForm () {
         <p>Login to your account to continue</p>
       </div>
 
+      <div className='mt-6 flex gap-3 justify-between'>
+        <Button
+          className='w-1/2'
+          variant='ghost'
+          startContent={<FcGoogle size={20} />}
+        >
+          Google
+        </Button>
+        <Button
+          className='w-1/2'
+          variant='ghost'
+          startContent={<FaFacebookSquare color='#0059be' size={20} />}
+        >
+          Facebook
+        </Button>
+      </div>
+
+      <div className='flex mt-6 justify-between items-center'>
+        <Divider className='flex-auto' />
+        <span className='flex-none mx-2 text-xs text-default-500'>
+          OR CONTINUE WITH
+        </span>
+        <Divider className='flex-auto' />
+      </div>
+
       {/* Form */}
-      <form className='flex flex-col mt-6' action={loginAction}>
+      <form className='flex flex-col mt-6 gap-3' action={loginAction}>
         <Input
+          {...inputProps}
+          autoFocus
           startContent={
             <MailIcon className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
           onChange={e => onEmailChange(e.target.value)}
-          variant='bordered'
-          size='lg'
           type='email'
           isInvalid={emailError !== '' ? true : false}
           errorMessage={
@@ -73,11 +97,9 @@ export default function LoginForm () {
         />
 
         <Input
+          {...inputProps}
           name='password'
-          className='mt-3'
-          variant='bordered'
           onChange={e => onPasswordChange(e.target.value)}
-          size='lg'
           placeholder='Password'
           isInvalid={passwordError !== '' ? true : false}
           errorMessage={
@@ -117,29 +139,6 @@ export default function LoginForm () {
           Log In
         </Button>
       </form>
-
-      <div className='flex mt-6 justify-between items-center'>
-        <Divider className='w-1/4' />
-        <span className='mx-1 text-xs text-default-500'>OR CONTINUE WITH</span>
-        <Divider className='w-1/4' />
-      </div>
-
-      <div className='mt-6 flex gap-3 justify-between'>
-        <Button
-          className='w-1/2'
-          variant='ghost'
-          startContent={<FcGoogle size={20} />}
-        >
-          Google
-        </Button>
-        <Button
-          className='w-1/2'
-          variant='ghost'
-          startContent={<FaFacebookSquare color='#0059be' size={20} />}
-        >
-          Facebook
-        </Button>
-      </div>
 
       <div className='flex mt-4 gap-1 items-center justify-center'>
         <p className='text-sm'>Need to create an account?</p>

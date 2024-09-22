@@ -1,14 +1,57 @@
 'use client'
 import Link from 'next/link'
-import { FaCameraRetro, FaCopyright, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa'
+import {
+  FaCameraRetro,
+  FaCopyright,
+  FaMapMarkerAlt,
+  FaPhoneAlt
+} from 'react-icons/fa'
 import { Divider } from '@nextui-org/divider'
 import NextLink from 'next/link'
 import { Input } from '@nextui-org/input'
 import { Button } from '@nextui-org/button'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { FormEvent, useEffect, useState } from 'react'
-import { MailIcon } from '@/components/ui/MailIcon'
+import { MailIcon } from '@/components/icons'
 import { validateEmail } from '@/utils/helper'
+
+const faqList: {
+  key: string
+  label: string
+}[] = [
+  {
+    key: 'payment_options',
+    label: 'payment option'
+  },
+  {
+    key: 'contact_details',
+    label: 'contact details'
+  },
+  {
+    key: 'refund_policy',
+    label: 'refund policy'
+  },
+  {
+    key: 'privacy_policy',
+    label: 'privacy policy'
+  },
+  {
+    key: 'shipping',
+    label: 'shipping'
+  },
+  {
+    key: 'used_item_condition',
+    label: 'used item condition'
+  },
+  {
+    key: 'vat&customs',
+    label: 'vat & custom'
+  },
+  {
+    key: 'warranty',
+    label: 'warranty'
+  }
+]
 
 export default function Footer () {
   const [subcriberEmail, setSubcriberEamil] = useState('')
@@ -24,17 +67,17 @@ export default function Footer () {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMdScreen(window.innerWidth > 768);
-    };
+      setIsMdScreen(window.innerWidth > 768)
+    }
 
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    handleResize()
+    window.addEventListener('resize', handleResize)
 
     // Cleanup event listener on component unmount
     return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <footer className='container max-w-7xl mx-auto flex flex-col py-2'>
@@ -86,51 +129,17 @@ export default function Footer () {
           <h4 className='font-bold text-xl'>FAQ</h4>
 
           <div className='mt-4 flex flex-col gap-1'>
-            <Link href='/' className=' hover:font-bold hover:underline block'>
-              Payment Option
-            </Link>
-            <Link
-              href='/'
-              className='mt-1 hover:font-bold hover:underline block'
-            >
-              Contact Details
-            </Link>
-            <Link
-              href='/'
-              className='mt-1 hover:font-bold hover:underline block'
-            >
-              Refund Policy
-            </Link>
-            <Link
-              href='/'
-              className='mt-1 hover:font-bold hover:underline block'
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href='/'
-              className='mt-1 hover:font-bold hover:underline block'
-            >
-              Shipping
-            </Link>
-            <Link
-              href='/'
-              className='mt-1 hover:font-bold hover:underline block'
-            >
-              Used Item Condition
-            </Link>
-            <Link
-              href='/'
-              className='mt-1 hover:font-bold hover:underline block'
-            >
-              VAT & Customs
-            </Link>
-            <Link
-              href='/'
-              className='mt-1 hover:font-bold hover:underline block'
-            >
-              Warranty
-            </Link>
+            {faqList.map(item => {
+              return (
+                <Link
+                  key={item.key}
+                  href='/'
+                  className='hover:font-bold hover:underline block capitalize'
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
           </div>
         </div>
         {isMdScreen && <Divider orientation='vertical' />}
@@ -150,7 +159,7 @@ export default function Footer () {
               errorMessage='Please enter a valid email'
               isInvalid={isInvalid}
             />
-            <Button type='submit' className='mt-2 w-full' size='md'>
+            <Button type='submit' className=' w-full' size='md'>
               Subcribe
               <FaArrowRightLong />
             </Button>

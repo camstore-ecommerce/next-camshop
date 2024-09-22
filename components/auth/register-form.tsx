@@ -1,7 +1,6 @@
 'use client'
 
-import { EyeFilledIcon } from '@/components/ui/EyeFilledIcon'
-import { EyeSlashFilledIcon } from '@/components/ui/EyeSlashFilledIcon'
+import { EyeFilledIcon, EyeSlashFilledIcon, MailIcon } from '@/components/icons'
 import { Button } from '@nextui-org/button'
 import { Checkbox } from '@nextui-org/checkbox'
 import { Input } from '@nextui-org/input'
@@ -15,7 +14,7 @@ import {
   validatePassword,
   validatePhoneNumber
 } from '@/utils/helper'
-import { MailIcon } from '@/components/ui/MailIcon'
+import { inputProps } from '@/utils/definitions'
 
 export default function RegisterForm () {
   const [isVisible, setIsVisible] = useState(false)
@@ -72,27 +71,52 @@ export default function RegisterForm () {
         <p>Create an account to get started</p>
       </div>
 
+      <div className='mt-6 flex gap-3 justify-between'>
+        <Button
+          className='w-1/2'
+          variant='ghost'
+          startContent={<FcGoogle size={20} />}
+        >
+          Google
+        </Button>
+        <Button
+          className='w-1/2'
+          variant='ghost'
+          startContent={<FaFacebookSquare color='#0059be' size={20} />}
+        >
+          Facebook
+        </Button>
+      </div>
+
+      <div className='flex mt-6 justify-between items-center'>
+        <Divider className='flex-auto' />
+        <span className='flex-none mx-2 text-xs text-default-500'>
+          OR CONTINUE WITH
+        </span>
+        <Divider className='flex-auto' />
+      </div>
+
       {/* Form */}
-      <form className='flex flex-col mt-6' action=''>
+      <form className='flex flex-col mt-6 gap-3' action=''>
         <div className='flex gap-3'>
           <Input
+            {...inputProps}
+            autoFocus
             name='first_name'
             isRequired
-            variant='bordered'
-            size='lg'
             type='text'
             placeholder='First Name'
           />
           <Input
+            {...inputProps}
             isRequired
-            variant='bordered'
-            size='lg'
             type='text'
             placeholder='Last Name'
           />
         </div>
 
         <Input
+          {...inputProps}
           startContent={
             <MailIcon className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
@@ -100,19 +124,14 @@ export default function RegisterForm () {
           onChange={e => onEmailChange(e.target.value)}
           isRequired
           errorMessage={emailError}
-          className='mt-3'
-          variant='bordered'
-          size='lg'
           type='email'
           placeholder='Email Address'
         />
 
         <Input
+          {...inputProps}
           startContent={<p className='text-default-500 text-sm'>+84</p>}
           isRequired
-          className='mt-3'
-          variant='bordered'
-          size='lg'
           type='text'
           pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
           errorMessage={phoneNumberError}
@@ -122,10 +141,8 @@ export default function RegisterForm () {
         />
 
         <Input
+          {...inputProps}
           isRequired
-          className='mt-3'
-          variant='bordered'
-          size='lg'
           startContent={
             <FaKey className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
@@ -153,12 +170,10 @@ export default function RegisterForm () {
         />
 
         <Input
+          {...inputProps}
           startContent={
             <FaKey className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
-          className='mt-3'
-          variant='bordered'
-          size='lg'
           onChange={e => onConfirmPasswordChange(e.target.value)}
           isRequired
           isInvalid={confirmPasswordError !== '' ? true : false}
@@ -181,37 +196,14 @@ export default function RegisterForm () {
           }
         />
 
-        <Checkbox size='sm' className='mt-4'>
+        <Checkbox size='sm' className='mt-1'>
           I agree with the <Link>Terms</Link> and <Link>Privacy Policy</Link>
         </Checkbox>
 
-        <Button className='mt-4' type='submit' color='primary'>
+        <Button className='mt-1' type='submit' color='primary'>
           Sign Up
         </Button>
       </form>
-
-      <div className='flex mt-6 justify-between items-center'>
-        <Divider className='w-1/4' />
-        <span className='mx-1 text-xs text-default-500'>OR CONTINUE WITH</span>
-        <Divider className='w-1/4' />
-      </div>
-
-      <div className='mt-6 flex gap-3 justify-between'>
-        <Button
-          className='w-1/2'
-          variant='ghost'
-          startContent={<FcGoogle size={20} />}
-        >
-          Google
-        </Button>
-        <Button
-          className='w-1/2'
-          variant='ghost'
-          startContent={<FaFacebookSquare color='#0059be' size={20} />}
-        >
-          Facebook
-        </Button>
-      </div>
 
       <div className='flex mt-4 gap-1 items-center justify-center'>
         <p className='text-sm'>Already have an account?</p>
