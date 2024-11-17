@@ -4,6 +4,11 @@ export type IconSvgProps = SVGProps<SVGSVGElement> & {
   size?: number;
 };
 
+
+// --------- for USER -----------
+export type Role = 'admin' | 'user'
+export type Status = 'active' | 'inactive' | 'suspended' | 'pending'
+
 export type User = {
   id: number
   first_name: string
@@ -12,6 +17,6 @@ export type User = {
   password: string
   total_orders: number
   phone: string
-  role: 'user' | 'admin'
-  status: 'active' | 'deactive' | 'suspended' | 'pending'
+  role: Role
+  status: Status
 }

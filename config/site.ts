@@ -1,95 +1,101 @@
-export type SiteConfig = typeof siteConfig;
+import ELink from '@/enum/link.enum'
+import { EPageHref, EPageLabel } from '@/enum/page.enum'
+
+export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "CAMSHOP",
-  description: "Cameras Online Shop",
+  name: 'CAMSHOP',
+  description: 'Cameras Online Shop',
   navItems: [
     {
-      label: "Home",
-      href: "/",
+      label: EPageLabel.Home,
+      href: EPageHref.Home,
     },
     {
-      label: "Cameras",
-      href: "/cameras",
+      label: EPageLabel.Cameras,
+      href: EPageHref.Cameras,
     },
     {
-      label: "Lens",
-      href: "/lens",
+      label: EPageLabel.Lens,
+      href: EPageHref.Lens,
     },
     {
-      label: "Film",
-      href: "/film",
+      label: EPageLabel.Film,
+      href: EPageHref.Film,
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: EPageLabel.Blog,
+      href: EPageHref.Blog,
     },
     {
-      label: "About",
-      href: "/about",
+      label: EPageLabel.About,
+      href: EPageHref.About,
     },
   ],
   navMenuItemsAuthed: [
     {
-      label: "Profile",
-      href: "/profile",
+      label: 'Profile',
+      href: '/profile',
     },
     {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: 'Cameras',
+      href: '/cameras',
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: 'Lens',
+      href: '/lens',
     },
     {
-      label: "Team",
-      href: "/team",
+      label: 'Film',
+      href: '/film',
     },
     {
-      label: "Calendar",
-      href: "/calendar",
+      label: 'Blog',
+      href: '/blog',
     },
     {
-      label: "Settings",
-      href: "/settings",
+      label: 'About',
+      href: '/about',
     },
     {
-      label: "Help & Feedback",
-      href: "/help-feedback",
-    },
-    {
-      label: "Logout",
-      href: "/logout",
+      label: 'Logout',
+      href: '/logout',
     },
   ],
   navMenuItems: [
     {
-      label: "Cameras",
-      href: "/cameras",
+      label: EPageLabel.Login,
+      href: EPageHref.Login,
     },
     {
-      label: "Lens",
-      href: "/lens",
+      label: EPageLabel.Home,
+      href: EPageHref.Home,
     },
     {
-      label: "Film",
-      href: "/film",
+      label: EPageLabel.Cameras,
+      href: EPageHref.Cameras,
     },
     {
-      label: "Blog",
-      href: "/blog",
+      label: EPageLabel.Lens,
+      href: EPageHref.Lens,
     },
     {
-      label: "About",
-      href: "/about",
+      label: EPageLabel.Film,
+      href: EPageHref.Film,
+    },
+    {
+      label: EPageLabel.Blog,
+      href: EPageHref.Blog,
+    },
+    {
+      label: 'About',
+      href: '/about',
     },
   ],
   links: {
-    github: "https://github.com/nextui-org/nextui",
-    twitter: "https://twitter.com/getnextui",
-    facebook: "https://www.facebook.com/tiendat.dao.3",
-    instagram: "https://www.instagram.com/noodle.dtd",
-    sponsor: "https://patreon.com/jrgarciadev",
+    github: ELink.Github,
+    twitter: ELink.Twitter,
+    facebook: ELink.Facebook,
+    instagram: ELink.Instagram,
   },
-};
+}

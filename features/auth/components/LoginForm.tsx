@@ -1,6 +1,5 @@
 'use client'
 
-import { EyeFilledIcon, EyeSlashFilledIcon, MailIcon } from '@/components/icons'
 import { Button } from '@nextui-org/button'
 import { Checkbox } from '@nextui-org/checkbox'
 import { Input } from '@nextui-org/input'
@@ -13,10 +12,12 @@ import { validateEmail, validatePassword } from '@/utils/helper'
 import { login } from '@/lib/actions'
 import { useFormState } from 'react-dom'
 import { inputProps } from '@/utils/definitions'
+import EyeFilledIcon from '@/components/icons/EyeFilledIcon'
+import EyeSlashFilledIcon from '@/components/icons/EyeSlashFilledIcon'
+import MailFilledIcon from '@/components/icons/MailFilledIcon'
 
-export default function LoginForm () {
+export default function LoginForm(): JSX.Element {
   const [loginState, loginAction] = useFormState(login, undefined)
-
   const [isVisible, setIsVisible] = useState(false)
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
@@ -81,11 +82,10 @@ export default function LoginForm () {
       <form className='flex flex-col mt-6 gap-3' action={loginAction}>
         <Input
           {...inputProps}
-          autoFocus
           startContent={
-            <MailIcon className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
+            <MailFilledIcon className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
-          onChange={e => onEmailChange(e.target.value)}
+          onChange={(e) => onEmailChange(e.target.value)}
           type='email'
           isInvalid={emailError !== '' ? true : false}
           errorMessage={
@@ -99,7 +99,7 @@ export default function LoginForm () {
         <Input
           {...inputProps}
           name='password'
-          onChange={e => onPasswordChange(e.target.value)}
+          onChange={(e) => onPasswordChange(e.target.value)}
           placeholder='Password'
           isInvalid={passwordError !== '' ? true : false}
           errorMessage={

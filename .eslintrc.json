@@ -11,7 +11,14 @@
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended"
   ],
-  "plugins": ["react", "unused-imports", "import", "@typescript-eslint", "jsx-a11y", "prettier"],
+  "plugins": [
+    "react",
+    "unused-imports",
+    "import",
+    "@typescript-eslint",
+    "jsx-a11y",
+    "prettier"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -26,67 +33,32 @@
     }
   },
   "rules": {
-    "no-console": "warn",
-    "react/prop-types": "off",
-    "react/jsx-uses-react": "off",
+    "semi": ["error", "never"],
     "react/react-in-jsx-scope": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "jsx-a11y/click-events-have-key-events": "warn",
-    "jsx-a11y/interactive-supports-focus": "warn",
-    "prettier/prettier": "warn",
-    "no-unused-vars": "off",
-    "unused-imports/no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "warn",
-    "@typescript-eslint/no-unused-vars": [
-      "warn",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/explicit-function-return-type": "off", // Type trả về của fn
+    "@typescript-eslint/no-namespace": "off", // Tên namespace
+    "@typescript-eslint/method-signature-style": "off",
+    "prettier/prettier": [
+      "error",
       {
-        "args": "after-used",
-        "ignoreRestSiblings": false,
-        "argsIgnorePattern": "^_.*?$"
+        "endOfLine": "auto",
+        "singleQuote": true,
+        "semi": false,
+        "jsxSingleQuote": true
       }
     ],
-    "import/order": [
-      "warn",
-      {
-        "groups": [
-          "type",
-          "builtin",
-          "object",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index"
-        ],
-        "pathGroups": [
-          {
-            "pattern": "~/**",
-            "group": "external",
-            "position": "after"
-          }
-        ],
-        "newlines-between": "always"
-      }
-    ],
-    "react/self-closing-comp": "warn",
-    "react/jsx-sort-props": [
-      "warn",
-      {
-        "callbacksLast": true,
-        "shorthandFirst": true,
-        "noSortAlphabetically": false,
-        "reservedFirst": true
-      }
-    ],
-    "padding-line-between-statements": [
-      "warn",
-      {"blankLine": "always", "prev": "*", "next": "return"},
-      {"blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
-      {
-        "blankLine": "any",
-        "prev": ["const", "let", "var"],
-        "next": ["const", "let", "var"]
-      }
-    ]
+    "@typescript-eslint/strict-boolean-expressions": "off", // Toán tử 3 ngôi
+    "@typescript-eslint/consistent-type-definitions": "off", // Dùng interface thay cho type
+    "@typescript-eslint/dot-notation": "off", // Có thể dùng object[`attribute`]
+    "@typescript-eslint/no-confusing-void-expression": "off", // Có thể dùng object[`attribute`]
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/restrict-template-expressions": "off", // Template string có type là any
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-explicit-any": "off", // Dùng any
+    "prefer-promise-reject-errors": "off", // Promis.reject chỉ trả về string | number | null
+    "react-hooks/exhaustive-deps": "off"
   }
 }

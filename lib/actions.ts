@@ -1,36 +1,44 @@
 'use server'
 
-import { z } from "zod"
+import { z } from 'zod'
 
 const loginSchema = z.object({
-  email: z.string().email({
-    message: 'Invalid email address'
-  }).trim(),
-  password: z.string().min(6, {
-    message: 'Password must be at least 6 characters long'
-  }).trim()
+  email: z
+    .string()
+    .email({
+      message: 'Invalid email address',
+    })
+    .trim(),
+  password: z
+    .string()
+    .min(6, {
+      message: 'Password must be at least 6 characters long',
+    })
+    .trim(),
 })
 
-export type LoginState = | {
-  errors?: {
-    email?: string[],
-    password?: string[]
-  },
-  message?: string
-} | undefined
+export type LoginState =
+  | {
+      errors?: {
+        email?: string[]
+        password?: string[]
+      }
+      message?: string
+    }
+  | undefined
 
 export async function login(state: LoginState, formData: FormData) {
   // Validate with zod
   const validatedFields = loginSchema.safeParse({
     email: formData.get('email'),
-    password: formData.get('password')
+    password: formData.get('password'),
   })
 
   // If FAILED
   if (!validatedFields.success) {
     return {
       errors: validatedFields.error.flatten().fieldErrors,
-      message: 'Invalid email or password, try again.'
+      message: 'Invalid email or password, try again.',
     }
   }
 
@@ -39,6 +47,6 @@ export async function login(state: LoginState, formData: FormData) {
 
   return {
     form: { email, password },
-    message: 'Login success'
+    message: 'Login success',
   }
 }

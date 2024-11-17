@@ -1,7 +1,9 @@
+import { Role, Status } from "@/utils/types"
 import { InputProps } from "@nextui-org/input"
+import { SelectProps } from "@nextui-org/react"
 
 export const roles: {
-  key: string,
+  key: Role,
   label: string
 }[] = [
     {
@@ -22,28 +24,36 @@ export const genders: {
     { key: 'female', label: 'Female' },
   ]
 
+// 'active': For users who are currently active in the system.
+// 'inactive': For users who have been deactivated but not removed.
+// 'pending': For users who have registered but haven't completed all necessary steps.
+// 'suspended': For users whose accounts have been temporarily disabled.
 export const statuses: {
-  key: string,
+  key: Status,
   label: string
+  color: SelectProps['color']
 }[] = [
     {
       key: 'active',
-      label: 'Active'
+      label: 'Active',
+      color: 'success'
     },
     {
-      key: 'deactive',
-      label: 'Deactive'
-    },
-    {
-      key: 'suspended',
-      label: 'Suspended'
+      key: 'inactive',
+      label: 'Inactive',
+      color: 'default'
     },
     {
       key: 'pending',
-      label: 'Pending'
+      label: 'Pending',
+      color: 'warning'
+    },
+    {
+      key: 'suspended',
+      label: 'Suspended',
+      color: 'danger'
     }
   ]
-
 
 export const inputProps: InputProps = {
   variant: 'bordered',

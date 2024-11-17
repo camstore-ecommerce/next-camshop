@@ -1,13 +1,9 @@
-import { Providers } from '@/app/providers'
+import { Providers } from '@/features/general/components/Providers'
 
-export default function AuthLayout ({
-  children
+export default function AuthLayout({
+  children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <section>
-      {children}
-    </section>
-  )
+  return <section>{children}</section>
 }

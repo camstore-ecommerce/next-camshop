@@ -43,7 +43,7 @@ export const Users: User[] = [
         "total_orders": 24,
         "phone": "+1-800-1376545",
         "role": "admin",
-        "status": "deactive"
+        "status": "inactive"
     },
     {
         "id": 5,
@@ -98,7 +98,7 @@ export const Users: User[] = [
         "total_orders": 95,
         "phone": "+1-800-3895226",
         "role": "user",
-        "status": "deactive"
+        "status": "inactive"
     },
     {
         "id": 10,
@@ -110,115 +110,115 @@ export const Users: User[] = [
         "phone": "+1-800-8577592",
         "role": "admin",
         "status": "suspended"
-    },
-    {
-        "id": 11,
-        "first_name": "Olivia",
-        "last_name": "Johnson",
-        "email": "olivia.johnson11@example.com",
-        "password": "123456",
-        "total_orders": 72,
-        "phone": "+1-800-8727900",
-        "role": "user",
-        "status": "deactive"
-    },
-    {
-        "id": 12,
-        "first_name": "Anna",
-        "last_name": "Davis",
-        "email": "anna.davis12@example.com",
-        "password": "123456",
-        "total_orders": 29,
-        "phone": "+1-800-8931500",
-        "role": "admin",
-        "status": "deactive"
-    },
-    {
-        "id": 13,
-        "first_name": "David",
-        "last_name": "Miller",
-        "email": "david.miller13@example.com",
-        "password": "123456",
-        "total_orders": 62,
-        "phone": "+1-800-5987999",
-        "role": "user",
-        "status": "pending"
-    },
-    {
-        "id": 14,
-        "first_name": "David",
-        "last_name": "Williams",
-        "email": "david.williams14@example.com",
-        "password": "123456",
-        "total_orders": 77,
-        "phone": "+1-800-8421742",
-        "role": "user",
-        "status": "pending"
-    },
-    {
-        "id": 15,
-        "first_name": "Emily",
-        "last_name": "Johnson",
-        "email": "emily.johnson15@example.com",
-        "password": "123456",
-        "total_orders": 39,
-        "phone": "+1-800-7041174",
-        "role": "user",
-        "status": "suspended"
-    },
-    {
-        "id": 16,
-        "first_name": "James",
-        "last_name": "Davis",
-        "email": "james.davis16@example.com",
-        "password": "123456",
-        "total_orders": 96,
-        "phone": "+1-800-3249506",
-        "role": "user",
-        "status": "suspended"
-    },
-    {
-        "id": 17,
-        "first_name": "David",
-        "last_name": "Johnson",
-        "email": "david.johnson17@example.com",
-        "password": "123456",
-        "total_orders": 36,
-        "phone": "+1-800-2398233",
-        "role": "user",
-        "status": "pending"
-    },
-    {
-        "id": 18,
-        "first_name": "James",
-        "last_name": "Garcia",
-        "email": "james.garcia18@example.com",
-        "password": "123456",
-        "total_orders": 39,
-        "phone": "+1-800-8414338",
-        "role": "user",
-        "status": "pending"
-    },
-    {
-        "id": 19,
-        "first_name": "Emily",
-        "last_name": "Jones",
-        "email": "emily.jones19@example.com",
-        "password": "123456",
-        "total_orders": 43,
-        "phone": "+1-800-2112725",
-        "role": "user",
-        "status": "active"
-    },
-    {
-        "id": 20,
-        "first_name": "Emily",
-        "last_name": "Williams",
-        "email": "emily.williams20@example.com",
-        "password": "123456",
-        "total_orders": 61,
-        "phone": "+1-800-9470595",
-        "role": "user",
-        "status": "suspended"
     }
+    // {
+    //     "id": 11,
+    //     "first_name": "Olivia",
+    //     "last_name": "Johnson",
+    //     "email": "olivia.johnson11@example.com",
+    //     "password": "123456",
+    //     "total_orders": 72,
+    //     "phone": "+1-800-8727900",
+    //     "role": "user",
+    //     "status": "inactive"
+    // },
+    // {
+    //     "id": 12,
+    //     "first_name": "Anna",
+    //     "last_name": "Davis",
+    //     "email": "anna.davis12@example.com",
+    //     "password": "123456",
+    //     "total_orders": 29,
+    //     "phone": "+1-800-8931500",
+    //     "role": "admin",
+    //     "status": "inactive"
+    // },
+    // {
+    //     "id": 13,
+    //     "first_name": "David",
+    //     "last_name": "Miller",
+    //     "email": "david.miller13@example.com",
+    //     "password": "123456",
+    //     "total_orders": 62,
+    //     "phone": "+1-800-5987999",
+    //     "role": "user",
+    //     "status": "pending"
+    // },
+    // {
+    //     "id": 14,
+    //     "first_name": "David",
+    //     "last_name": "Williams",
+    //     "email": "david.williams14@example.com",
+    //     "password": "123456",
+    //     "total_orders": 77,
+    //     "phone": "+1-800-8421742",
+    //     "role": "user",
+    //     "status": "pending"
+    // },
+    // {
+    //     "id": 15,
+    //     "first_name": "Emily",
+    //     "last_name": "Johnson",
+    //     "email": "emily.johnson15@example.com",
+    //     "password": "123456",
+    //     "total_orders": 39,
+    //     "phone": "+1-800-7041174",
+    //     "role": "user",
+    //     "status": "suspended"
+    // },
+    // {
+    //     "id": 16,
+    //     "first_name": "James",
+    //     "last_name": "Davis",
+    //     "email": "james.davis16@example.com",
+    //     "password": "123456",
+    //     "total_orders": 96,
+    //     "phone": "+1-800-3249506",
+    //     "role": "user",
+    //     "status": "suspended"
+    // },
+    // {
+    //     "id": 17,
+    //     "first_name": "David",
+    //     "last_name": "Johnson",
+    //     "email": "david.johnson17@example.com",
+    //     "password": "123456",
+    //     "total_orders": 36,
+    //     "phone": "+1-800-2398233",
+    //     "role": "user",
+    //     "status": "pending"
+    // },
+    // {
+    //     "id": 18,
+    //     "first_name": "James",
+    //     "last_name": "Garcia",
+    //     "email": "james.garcia18@example.com",
+    //     "password": "123456",
+    //     "total_orders": 39,
+    //     "phone": "+1-800-8414338",
+    //     "role": "user",
+    //     "status": "pending"
+    // },
+    // {
+    //     "id": 19,
+    //     "first_name": "Emily",
+    //     "last_name": "Jones",
+    //     "email": "emily.jones19@example.com",
+    //     "password": "123456",
+    //     "total_orders": 43,
+    //     "phone": "+1-800-2112725",
+    //     "role": "user",
+    //     "status": "active"
+    // },
+    // {
+    //     "id": 20,
+    //     "first_name": "Emily",
+    //     "last_name": "Williams",
+    //     "email": "emily.williams20@example.com",
+    //     "password": "123456",
+    //     "total_orders": 61,
+    //     "phone": "+1-800-9470595",
+    //     "role": "user",
+    //     "status": "suspended"
+    // }
 ]

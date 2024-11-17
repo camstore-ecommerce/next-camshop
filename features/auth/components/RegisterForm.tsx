@@ -1,6 +1,5 @@
 'use client'
 
-import { EyeFilledIcon, EyeSlashFilledIcon, MailIcon } from '@/components/icons'
 import { Button } from '@nextui-org/button'
 import { Checkbox } from '@nextui-org/checkbox'
 import { Input } from '@nextui-org/input'
@@ -12,19 +11,26 @@ import { FcGoogle } from 'react-icons/fc'
 import {
   validateEmail,
   validatePassword,
-  validatePhoneNumber
+  validatePhoneNumber,
 } from '@/utils/helper'
 import { inputProps } from '@/utils/definitions'
+import MailFilledIcon from '@/components/icons/MailFilledIcon'
+import EyeSlashFilledIcon from '@/components/icons/EyeSlashFilledIcon'
+import EyeFilledIcon from '@/components/icons/EyeFilledIcon'
 
-export default function RegisterForm () {
-  const [isVisible, setIsVisible] = useState(false)
-  const [emailError, setEmailError] = useState('')
-  const [passwordError, setPasswordError] = useState('')
-  const [phoneNumberError, setPhoneNumberError] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPasswordError, setConfirmPasswordError] = useState('')
+export default function RegisterForm(): JSX.Element {
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+  const [isVisibleConfirmPass, setIsVisibleConfirmPass] =
+    useState<boolean>(false)
+  const [emailError, setEmailError] = useState<string>('')
+  const [passwordError, setPasswordError] = useState<string>('')
+  const [phoneNumberError, setPhoneNumberError] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [confirmPasswordError, setConfirmPasswordError] = useState<string>('')
 
   const toggleVisibility = () => setIsVisible(!isVisible)
+  const toggleVisibilityConfirmPass = () =>
+    setIsVisibleConfirmPass(!isVisibleConfirmPass)
 
   const onEmailChange = (email: string) => {
     if (!validateEmail(email)) {
@@ -101,7 +107,6 @@ export default function RegisterForm () {
         <div className='flex gap-3'>
           <Input
             {...inputProps}
-            autoFocus
             name='first_name'
             isRequired
             type='text'
@@ -118,10 +123,10 @@ export default function RegisterForm () {
         <Input
           {...inputProps}
           startContent={
-            <MailIcon className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
+            <MailFilledIcon className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
           isInvalid={emailError !== '' ? true : false}
-          onChange={e => onEmailChange(e.target.value)}
+          onChange={(e) => onEmailChange(e.target.value)}
           isRequired
           errorMessage={emailError}
           type='email'
@@ -136,7 +141,7 @@ export default function RegisterForm () {
           pattern='[0-9]{3}-[0-9]{3}-[0-9]{4}'
           errorMessage={phoneNumberError}
           isInvalid={phoneNumberError !== '' ? true : false}
-          onChange={e => onPhoneNumberChange(e.target.value)}
+          onChange={(e) => onPhoneNumberChange(e.target.value)}
           placeholder='Phone Number'
         />
 
@@ -147,7 +152,7 @@ export default function RegisterForm () {
             <FaKey className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
           isInvalid={passwordError !== '' ? true : false}
-          onChange={e => onPasswordChange(e.target.value)}
+          onChange={(e) => onPasswordChange(e.target.value)}
           placeholder='Password'
           value={password}
           onValueChange={setPassword}
@@ -174,20 +179,20 @@ export default function RegisterForm () {
           startContent={
             <FaKey className='text-xl text-default-400 pointer-events-none flex-shrink-0' />
           }
-          onChange={e => onConfirmPasswordChange(e.target.value)}
+          onChange={(e) => onConfirmPasswordChange(e.target.value)}
           isRequired
           isInvalid={confirmPasswordError !== '' ? true : false}
           errorMessage={confirmPasswordError}
           placeholder='Confirm Password'
-          type={isVisible ? 'text' : 'password'}
+          type={isVisibleConfirmPass ? 'text' : 'password'}
           endContent={
             <button
               className='focus:outline-none'
               type='button'
-              onClick={toggleVisibility}
-              aria-label='toggle password visibility'
+              onClick={toggleVisibilityConfirmPass}
+              aria-label='toggle confirm password visibility'
             >
-              {isVisible ? (
+              {isVisibleConfirmPass ? (
                 <EyeSlashFilledIcon className='text-2xl text-default-400 pointer-events-none' />
               ) : (
                 <EyeFilledIcon className='text-2xl text-default-400 pointer-events-none' />
