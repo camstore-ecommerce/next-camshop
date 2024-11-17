@@ -1,0 +1,1 @@
+export const PADDING_CONTENT_X = 'px-28'

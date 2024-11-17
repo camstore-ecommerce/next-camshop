@@ -11,7 +11,7 @@ export default function ClientLayout({
   return (
     <div className='relative flex flex-col h-screen'>
       <Header />
-      <main className='flex-1 py-2 border border-red-600 min-h-screen'>{children}</main>
+      <main className='flex-1 min-h-screen'>{children}</main>
       <Footer2 />
     </div>
   )

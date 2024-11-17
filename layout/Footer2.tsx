@@ -65,7 +65,7 @@ export default function Footer(): JSX.Element {
   }
 
   return (
-    <div className='flex flex-col py-2 gap-4 text-small md:text-base'>
+    <div className='flex flex-col py-2 gap-4 text-small md:text-base md:px-28'>
       <div className='flex flex-col md:flex-row gap-2 justify-between'>
         <div className='flex flex-col gap-2 mx-3 flex-1'>
           <NextLink className='flex justify-start items-center gap-2' href='/'>
@@ -73,7 +73,7 @@ export default function Footer(): JSX.Element {
             <h3 className='font-bold text-inherit text-2xl'>CAMSHOP</h3>
           </NextLink>
           <p>CAMSHOP since 2024</p>
-          <p className='font-bold italic'>
+          <p className='font-bold italic '>
             “The camera is an instrument that teaches people how to see without
             a camera.”
           </p>
