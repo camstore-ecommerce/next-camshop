@@ -45,7 +45,7 @@ export default function LoginForm(): JSX.Element {
   console.log('loginState: ', loginState)
 
   return (
-    <div className='flex flex-col min-h-full max-w-sm mx-auto mb-12'>
+    <div className='flex flex-col min-h-full max-w-sm mx-auto mb-12 mt-4'>
       {/* Top Logo */}
       <div className='flex flex-col text-center items-center gap-1 mx-auto'>
         <FaCameraRetro className='shrink-0' size={35} />
