@@ -2,8 +2,8 @@
 
 import { ImageSilder1, ImageSilder2 } from '@/constants/image.constant'
 import { PADDING_CONTENT_X } from '@/constants/style.constant'
-import Image from "next/legacy/image"
-import { StaticImageData } from "next/legacy/image"
+import Image from "next/image"
+import { StaticImageData } from "next/image"
 import { useEffect, useState } from 'react'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
@@ -68,7 +68,7 @@ export default function ImageSlider() {
   }
 
   return (
-    <div className={`md:${PADDING_CONTENT_X} relative w-full mt-4`}>
+    (<div className={`md:${PADDING_CONTENT_X} relative w-full mt-4`}>
       <div
         className='relative h-[460px] group hover:-translate-y-2'
         onMouseOver={handleMouseOver}
@@ -77,10 +77,12 @@ export default function ImageSlider() {
         <Image
           src={images[currentIndex].src}
           alt={`Slider Image ${currentIndex + 1}`}
-          layout='fill'
-          objectFit='cover'
           className='rounded-xl transition-all duration-500 ease-in-out cursor-pointer'
-        />
+          fill
+          sizes="100vw"
+          style={{
+            objectFit: "cover"
+          }} />
       </div>
       <button
         className='absolute left-14 top-1/2 transform h-[459px] rounded-xl hover:bg-primary-700 mx-1 -mt-[10px] -translate-y-1/2 bg-primary-900 text-white p-2 group'
@@ -106,6 +108,6 @@ export default function ImageSlider() {
           ></div>
         ))}
       </div>
-    </div>
-  )
+    </div>)
+  );
 }
