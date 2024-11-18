@@ -2,8 +2,8 @@
 
 import { ImageSilder1, ImageSilder2 } from '@/constants/image.constant'
 import { PADDING_CONTENT_X } from '@/constants/style.constant'
-import Image from 'next/image'
-import { StaticImageData } from 'next/image'
+import Image from "next/legacy/image"
+import { StaticImageData } from "next/legacy/image"
 import { useEffect, useState } from 'react'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
