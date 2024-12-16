@@ -1,7 +1,7 @@
 import { nextui } from '@nextui-org/theme'
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = {
   important: true,
   content: [
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,6 +11,7 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './styles/**/*.{js,ts,jsx,tsx,mdx}',
     './layout/**/*.{js,ts,jsx,tsx,mdx}',
+    './node_modules/@next/font/google/inter_b35c0a41.module.css',
   ],
   theme: {
     extend: {
@@ -27,3 +28,5 @@ module.exports = {
     }),
   ],
 }
+
+export default config

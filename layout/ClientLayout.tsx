@@ -9,9 +9,9 @@ export default function ClientLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className='relative flex flex-col h-screen'>
+    <div className='relative flex flex-col'>
       <Header />
-      <main className='flex-1 min-h-screen'>{children}</main>
+      <main className='flex-1'>{children}</main>
       <Footer2 />
     </div>
   )

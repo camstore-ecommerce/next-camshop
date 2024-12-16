@@ -1,9 +1,18 @@
 'use client'
 
-import { ImageSilder1, ImageSilder2 } from '@/constants/image.constant'
+import {
+  ImageSlider1,
+  ImageSlider2,
+  ImageSlider3,
+  ImageSlider4,
+  ImageSlider5,
+  ImageSlider6,
+} from '@/features/home/constants/image.constant'
 import { PADDING_CONTENT_X } from '@/constants/style.constant'
-import Image from "next/image"
-import { StaticImageData } from "next/image"
+import { Button } from '@nextui-org/button'
+import Image from 'next/image'
+import { Image as NextUIImage } from '@nextui-org/react'
+import { StaticImageData } from 'next/image'
 import { useEffect, useState } from 'react'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 
@@ -14,14 +23,26 @@ interface ImageData {
 
 const images: ImageData[] = [
   {
-    src: ImageSilder1,
+    src: ImageSlider1,
   },
   {
-    src: ImageSilder2,
+    src: ImageSlider2,
+  },
+  {
+    src: ImageSlider3,
+  },
+  {
+    src: ImageSlider4,
+  },
+  {
+    src: ImageSlider5,
+  },
+  {
+    src: ImageSlider6,
   },
 ]
 
-const TIME_INTERVAL = 5000
+const TIME_INTERVAL = 4000
 
 export default function ImageSlider() {
   // State to keep track of the current image index
@@ -68,46 +89,62 @@ export default function ImageSlider() {
   }
 
   return (
-    (<div className={`md:${PADDING_CONTENT_X} relative w-full mt-4`}>
+    <div className={`md:${PADDING_CONTENT_X} relative w-full mt-4`}>
       <div
-        className='relative h-[460px] group hover:-translate-y-2'
+        className='relative h-[460px] group overflow-clip  rounded-xl'
         onMouseOver={handleMouseOver}
         onMouseLeave={handleMouseLeave}
       >
-        <Image
-          src={images[currentIndex].src}
+        <NextUIImage
+          as={Image}
+          src={images[currentIndex].src.src}
           alt={`Slider Image ${currentIndex + 1}`}
-          className='rounded-xl transition-all duration-500 ease-in-out cursor-pointer'
+          className='transition-all duration-500 ease-in-out'
           fill
-          sizes="100vw"
+          isBlurred
+          isZoomed
+          sizes='100vw'
           style={{
-            objectFit: "cover"
-          }} />
+            objectFit: 'contain',
+          }}
+        />
       </div>
-      <button
-        className='absolute left-14 top-1/2 transform h-[459px] rounded-xl hover:bg-primary-700 mx-1 -mt-[10px] -translate-y-1/2 bg-primary-900 text-white p-2 group'
+      <Button
+        size='sm'
+        isIconOnly
+        className='absolute left-12 top-1/2 transform h-fit w-fit p-3 rounded-full -mt-[10px] -translate-y-1/2 bg-default-50 text-white group hover:-translate-x-2'
         onClick={prevSlide}
       >
-        <FaChevronLeft className='text-gray-400 group-hover:text-white' />
-      </button>
-      <button
-        className='absolute right-14 top-1/2 transform h-[459px] rounded-xl hover:bg-[#1a222f] mx-1 -mt-[10px] -translate-y-1/2 bg-[#111927] text-white p-2 group'
+        <FaChevronLeft
+          size={24}
+          className='text-foreground-500 group-hover:text-foreground-700'
+        />
+      </Button>
+      <Button
+        size='sm'
+        isIconOnly
+        className='absolute right-12 top-1/2 transform h-fit w-fit p-3 rounded-full -mt-[10px] -translate-y-1/2 bg-default-50 text-white group hover:translate-x-2'
         onClick={nextSlide}
       >
-        <FaChevronRight className='text-gray-400 group-hover:text-white' />
-      </button>
+        <FaChevronRight
+          size={24}
+          className='text-foreground-500 group-hover:text-foreground-700'
+        />
+      </Button>
       <div className='flex justify-center my-4'>
         {images.map((_, index) => (
           <div
             key={index}
-            className={`h-1 w-10 mx-1 ${
-              index === currentIndex
-                ? 'bg-primary-400 rounded-xl'
-                : 'bg-default-50 rounded-xl'
-            } transition-all duration-500 ease-in-out`}
+            className={`h-1 w-10 mx-1
+              ${
+                index === currentIndex
+                  ? 'bg-primary-400 rounded-xl'
+                  : 'bg-default-50 rounded-xl'
+              }
+            transition-all duration-500 ease-in-out`}
           ></div>
         ))}
       </div>
-    </div>)
-  );
+    </div>
+  )
 }

@@ -1,21 +1,23 @@
 export enum EPageLabel {
   Home = 'Home',
   Cameras = 'Cameras',
-  Lens = 'Lens',
+  Lenses = 'Lenses',
   Film = 'Film',
   Blog = 'Blog',
   About = 'About',
   Login = 'Login',
   Register = 'Register',
+  DigitalCamera = 'Digital Camera',
 }
 
 export enum EPageHref {
   Home = '/',
   Cameras = '/cameras',
-  Lens = '/lens',
+  Lenses = '/lenses',
   Film = '/film',
   Blog = '/blog',
   About = '/about',
   Login = '/login',
   Register = '/register',
+  DigitalCamera = '/digital-camera',
 }

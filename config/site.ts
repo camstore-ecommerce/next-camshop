@@ -16,8 +16,8 @@ export const siteConfig = {
       href: EPageHref.Cameras,
     },
     {
-      label: EPageLabel.Lens,
-      href: EPageHref.Lens,
+      label: EPageLabel.Lenses,
+      href: EPageHref.Lenses,
     },
     {
       label: EPageLabel.Film,
@@ -76,8 +76,8 @@ export const siteConfig = {
       href: EPageHref.Cameras,
     },
     {
-      label: EPageLabel.Lens,
-      href: EPageHref.Lens,
+      label: EPageLabel.Lenses,
+      href: EPageHref.Lenses,
     },
     {
       label: EPageLabel.Film,
@@ -88,8 +88,8 @@ export const siteConfig = {
       href: EPageHref.Blog,
     },
     {
-      label: 'About',
-      href: '/about',
+      label: EPageLabel.About,
+      href: EPageHref.About,
     },
   ],
   links: {

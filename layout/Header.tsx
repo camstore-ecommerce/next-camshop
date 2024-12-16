@@ -20,12 +20,15 @@ import { ThemeSwitch } from '@/components/theme-switch'
 import { FaCameraRetro, FaFacebookSquare, FaInstagram } from 'react-icons/fa'
 import { usePathname } from 'next/navigation'
 import SearchIcon from '@/components/icons/SearchIcon'
+import { Badge } from '@nextui-org/react'
+import { FaShoppingCart } from 'react-icons/fa'
 
 export default function Header(): JSX.Element {
   const pathName = usePathname()
 
   const searchInput = (
     <Input
+      variant='bordered'
       aria-label='Search'
       classNames={{
         inputWrapper: 'bg-default-100',
@@ -34,7 +37,10 @@ export default function Header(): JSX.Element {
       labelPlacement='outside'
       placeholder='Search...'
       startContent={
-        <SearchIcon size={15} className='text-base text-default-400 pointer-events-none flex-shrink-0' />
+        <SearchIcon
+          size={15}
+          className='text-base text-default-400 pointer-events-none flex-shrink-0'
+        />
       }
       type='search'
     />
@@ -45,7 +51,7 @@ export default function Header(): JSX.Element {
       position='sticky'
       isBordered
       maxWidth='full'
-      // shouldHideOnScroll={true}
+      shouldHideOnScroll={true}
       isBlurred={true}
       className='md:px-28'
     >
@@ -106,15 +112,36 @@ export default function Header(): JSX.Element {
             aria-label='Instagram'
             href={siteConfig.links.instagram}
           >
-            <FaInstagram size={22} color='pink' />
+            <FaInstagram
+              size={22}
+              color='#E1306C'
+            />
           </Link>
           <ThemeSwitch />
         </NavbarItem>
         <NavbarItem className='hidden lg:flex'>{searchInput}</NavbarItem>
         <NavbarItem>
-          <Button as={Link} color='primary' href='/login' variant='ghost'>
+          <Button as={Link} color='primary' href='/login' variant='solid'>
             Log In
           </Button>
+        </NavbarItem>
+        <NavbarItem>
+          <Badge
+            size='sm'
+            content='99+'
+            variant='solid'
+            shape='circle'
+            color='primary'
+          >
+            <Button
+              radius='full'
+              isIconOnly
+              aria-label='more than 99 notifications'
+              variant='light'
+            >
+              <FaShoppingCart className='text-primary-800' size={24} />
+            </Button>
+          </Badge>
         </NavbarItem>
       </NavbarContent>
 
